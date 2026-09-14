@@ -41,6 +41,79 @@
                 </p>
             </section>
 
+            <section class="simulator-section">
+                <div class="simulator-heading">
+                    <span class="simulator-kicker">✨ NOVO NO FURVERSE</span>
+                    <h2>🐾 Simulador 3D de Fursuit</h2>
+                    <p>
+                        Visualize um modelo 3D ao lado da imagem de referência. Por enquanto,
+                        você pode carregar um modelo <strong>.glb</strong> e a foto da fursuit diretamente no navegador.
+                    </p>
+                </div>
+
+                <div class="fursuit-simulator">
+                    <div class="simulator-panel model-panel">
+                        <div class="panel-title">
+                            <div>
+                                <span class="panel-badge">3D</span>
+                                <h3>Modelo 3D</h3>
+                            </div>
+                            <span id="modelStatus" class="panel-status">Aguardando modelo</span>
+                        </div>
+
+                        <div id="modelViewer" class="model-viewer">
+                            <div class="viewer-placeholder" id="viewerPlaceholder">
+                                <div class="viewer-paw">🐾</div>
+                                <h4>Seu modelo 3D aparecerá aqui</h4>
+                                <p>Carregue um arquivo <strong>.glb</strong> para começar.</p>
+                            </div>
+                        </div>
+
+                        <label class="upload-button">
+                            📦 Carregar modelo 3D (.glb)
+                            <input id="modelInput" type="file" accept=".glb,model/gltf-binary" hidden>
+                        </label>
+
+                        <div class="viewer-help">
+                            <span>🖱️ Arraste para girar</span>
+                            <span>🔍 Scroll para zoom</span>
+                        </div>
+                    </div>
+
+                    <div class="simulator-panel reference-panel">
+                        <div class="panel-title">
+                            <div>
+                                <span class="panel-badge reference-badge">REF</span>
+                                <h3>Imagem de referência</h3>
+                            </div>
+                            <span id="imageStatus" class="panel-status">Nenhuma imagem</span>
+                        </div>
+
+                        <div class="reference-viewer" id="referenceViewer">
+                            <div class="reference-placeholder" id="referencePlaceholder">
+                                <div class="reference-icon">📸</div>
+                                <h4>Adicione a foto da fursuit</h4>
+                                <p>A imagem ficará aqui, ao lado do modelo 3D.</p>
+                            </div>
+                            <img id="referenceImage" alt="Imagem de referência da fursuit" hidden>
+                        </div>
+
+                        <label class="upload-button secondary-upload">
+                            🖼️ Carregar imagem de referência
+                            <input id="imageInput" type="file" accept="image/*" hidden>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="simulator-note">
+                    <span>💡</span>
+                    <p>
+                        <strong>Importante:</strong> uma única foto não transforma automaticamente a fursuit em um modelo 3D fiel.
+                        O modelo precisa ser criado em um software ou ferramenta de modelagem 3D e depois carregado aqui.
+                    </p>
+                </div>
+            </section>
+
             <section>
                 <h2>📸 Galeria de Fursuits</h2>
                 <p>Use estes espaços para adicionar fotos ou ilustrações de diferentes fursuits.</p>
@@ -97,6 +170,141 @@
         <p>Explorando a criatividade, amizade e paixão animal.</p>
         <p>© 2026 Furverse</p>
     </footer>
+
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js';
+        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js';
+        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/loaders/GLTFLoader.js';
+
+        const viewer = document.getElementById('modelViewer');
+        const placeholder = document.getElementById('viewerPlaceholder');
+        const modelInput = document.getElementById('modelInput');
+        const modelStatus = document.getElementById('modelStatus');
+        const imageInput = document.getElementById('imageInput');
+        const referenceImage = document.getElementById('referenceImage');
+        const referencePlaceholder = document.getElementById('referencePlaceholder');
+        const imageStatus = document.getElementById('imageStatus');
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x12172f);
+
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        camera.position.set(0, 1.3, 4);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        viewer.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.target.set(0, 1, 0);
+        controls.minDistance = 1.5;
+        controls.maxDistance = 8;
+
+        scene.add(new THREE.HemisphereLight(0xffffff, 0x252040, 2.2));
+        const keyLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        keyLight.position.set(3, 5, 4);
+        scene.add(keyLight);
+
+        const floor = new THREE.Mesh(
+            new THREE.CircleGeometry(3, 64),
+            new THREE.MeshStandardMaterial({ color: 0x1b2142, roughness: 0.95 })
+        );
+        floor.rotation.x = -Math.PI / 2;
+        floor.position.y = -1.35;
+        scene.add(floor);
+
+        let currentModel = null;
+        const loader = new GLTFLoader();
+
+        function frameModel(model) {
+            const box = new THREE.Box3().setFromObject(model);
+            const size = box.getSize(new THREE.Vector3());
+            const center = box.getCenter(new THREE.Vector3());
+            const maxSize = Math.max(size.x, size.y, size.z);
+            const scale = 2.7 / maxSize;
+            model.scale.setScalar(scale);
+
+            const scaledBox = new THREE.Box3().setFromObject(model);
+            const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
+            model.position.sub(scaledCenter);
+            model.position.y = -1.35 - scaledBox.min.y;
+
+            controls.target.set(0, Math.max(0.1, scaledBox.getSize(new THREE.Vector3()).y * 0.42), 0);
+            camera.position.set(0, 1.2, 4.2);
+            controls.update();
+        }
+
+        modelInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (currentModel) {
+                scene.remove(currentModel);
+                currentModel.traverse((object) => {
+                    if (object.geometry) object.geometry.dispose();
+                    if (object.material) {
+                        const materials = Array.isArray(object.material) ? object.material : [object.material];
+                        materials.forEach((material) => material.dispose());
+                    }
+                });
+            }
+
+            modelStatus.textContent = 'Carregando...';
+            const url = URL.createObjectURL(file);
+
+            loader.load(
+                url,
+                (gltf) => {
+                    currentModel = gltf.scene;
+                    scene.add(currentModel);
+                    frameModel(currentModel);
+                    placeholder.style.display = 'none';
+                    modelStatus.textContent = 'Modelo carregado';
+                    URL.revokeObjectURL(url);
+                },
+                undefined,
+                () => {
+                    modelStatus.textContent = 'Erro ao carregar';
+                    URL.revokeObjectURL(url);
+                    alert('Não foi possível carregar esse modelo. Tente usar um arquivo .glb válido.');
+                }
+            );
+        });
+
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const url = URL.createObjectURL(file);
+            referenceImage.src = url;
+            referenceImage.hidden = false;
+            referencePlaceholder.style.display = 'none';
+            imageStatus.textContent = 'Imagem carregada';
+        });
+
+        function resizeViewer() {
+            const width = viewer.clientWidth;
+            const height = viewer.clientHeight;
+            if (!width || !height) return;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height, false);
+        }
+
+        window.addEventListener('resize', resizeViewer);
+        resizeViewer();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
 
 </body>
 </html>
