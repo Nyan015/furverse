@@ -6,63 +6,56 @@
     <title>Fursuits - Furverse</title>
     <link rel="stylesheet" href="style.css">
     <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
-        }
-    }
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}
     </script>
 </head>
 <body>
-<header>
-    <nav>
-        <div class="logo">🐾 Furverse</div>
-        <ul>
-            <li><a href="index.html">Início</a></li><li><a href="page1.html">O que é?</a></li><li><a href="page2.html">Fursonas</a></li><li><a href="page3.html">Fursuits</a></li><li><a href="page4.html">Arte</a></li><li><a href="page5.html">Comunidade</a></li><li><a href="page6.html">Mitos</a></li><li><a href="page7.html">Curiosidades</a></li>
-        </ul>
-    </nav>
-</header>
+<header><nav>
+    <div class="logo">🐾 Furverse</div>
+    <ul>
+        <li><a href="index.html">Início</a></li><li><a href="page1.html">O que é?</a></li><li><a href="page2.html">Fursonas</a></li><li><a href="page3.html">Fursuits</a></li><li><a href="page4.html">Arte</a></li><li><a href="page5.html">Comunidade</a></li><li><a href="page6.html">Mitos</a></li><li><a href="page7.html">Curiosidades</a></li>
+    </ul>
+</nav></header>
 
 <main><div class="container">
-    <section>
-        <h2>🧸 O que é uma Fursuit?</h2>
-        <p>A fursuit é um traje de animal antropomórfico feito sob medida, geralmente baseado na fursona do seu proprietário.</p>
-        <p>Embora sejam muito populares em convenções e eventos, nem todas as pessoas do fandom possuem uma fursuit, sendo um item totalmente opcional na comunidade.</p>
-    </section>
+<section>
+    <h2>🧸 O que é uma Fursuit?</h2>
+    <p>A fursuit é um traje de animal antropomórfico feito sob medida, geralmente baseado na fursona do seu proprietário.</p>
+    <p>Embora sejam muito populares em convenções e eventos, nem todas as pessoas do fandom possuem uma fursuit, sendo um item totalmente opcional na comunidade.</p>
+</section>
 
-    <section class="simulator-section">
-        <div class="simulator-heading">
-            <span class="simulator-kicker">✨ DEMONSTRAÇÃO DO FURVERSE</span>
-            <h2>🐾 Simulador 3D de Fursuit</h2>
-            <p>Uma demonstração pronta: à esquerda está uma interpretação 3D estilizada da fursuit e, à direita, a foto usada como referência.</p>
+<section class="simulator-section">
+    <div class="simulator-heading">
+        <span class="simulator-kicker">✨ DEMONSTRAÇÃO DO FURVERSE</span>
+        <h2>🐾 Simulador 3D de Fursuit</h2>
+        <p>Explore uma representação 3D estilizada inspirada na fursuit da foto. O modelo pode ser girado livremente para observar seus detalhes.</p>
+    </div>
+
+    <div class="fursuit-simulator">
+        <div class="simulator-panel model-panel">
+            <div class="panel-title"><div><span class="panel-badge">3D</span><h3>Modelo 3D</h3></div><span class="panel-status">Interativo</span></div>
+            <div id="modelViewer" class="model-viewer"><div class="viewer-label">MODELO 3D ESTILIZADO</div></div>
+            <div class="viewer-help"><span>🖱️ Arraste para girar</span><span>🔍 Scroll para zoom</span></div>
         </div>
 
-        <div class="fursuit-simulator">
-            <div class="simulator-panel model-panel">
-                <div class="panel-title"><div><span class="panel-badge">3D</span><h3>Modelo 3D</h3></div><span class="panel-status">Demonstração</span></div>
-                <div id="modelViewer" class="model-viewer"><div class="viewer-label">MODELO 3D ESTILIZADO</div></div>
-                <div class="viewer-help"><span>🖱️ Arraste para girar</span><span>🔍 Scroll para zoom</span></div>
-            </div>
-
-            <div class="simulator-panel reference-panel">
-                <div class="panel-title"><div><span class="panel-badge reference-badge">REF</span><h3>Imagem de referência</h3></div><span class="panel-status">Foto original</span></div>
-                <div class="reference-viewer" id="referenceViewer">
-                    <div class="reference-placeholder"><div class="reference-icon">🐾</div><h4>Fursuit usada na demonstração</h4><p>A referência visual da demonstração aparece neste quadro.</p></div>
-                </div>
+        <div class="simulator-panel reference-panel">
+            <div class="panel-title"><div><span class="panel-badge reference-badge">REF</span><h3>Imagem de referência</h3></div><span class="panel-status">Foto original</span></div>
+            <div class="reference-viewer" id="referenceViewer">
+                <img id="referenceImage" alt="Fursuit usada como referência" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIdifmf5wSk_-DnZBzXNndFACvTD_P1aHJZcijwc5Q5g&s=10">
             </div>
         </div>
+    </div>
 
-        <div class="simulator-note"><span>💡</span><p><strong>Sobre esta demonstração:</strong> o modelo 3D é uma representação estilizada baseada na foto. Ele não pretende ser uma reconstrução exata da fursuit real.</p></div>
-    </section>
+    <div class="simulator-note"><span>💡</span><p><strong>Sobre esta demonstração:</strong> o modelo 3D é uma interpretação artística baseada na imagem. Ele foi construído para demonstrar como uma visualização 3D poderia funcionar dentro do Furverse.</p></div>
+</section>
 
-    <section>
-        <h2>📸 Galeria de Fursuits</h2><p>Use estes espaços para adicionar fotos ou ilustrações de diferentes fursuits.</p>
-        <div class="image-gallery"><div class="image-box"><span>📷</span><p>Fursuit 1</p><small>Adicione sua imagem aqui.</small></div><div class="image-box"><span>📷</span><p>Fursuit 2</p><small>Adicione sua imagem aqui.</small></div><div class="image-box"><span>📷</span><p>Fursuit 3</p><small>Adicione sua imagem aqui.</small></div></div>
-    </section>
-
-    <section><h2>✂️ Principais Estilos de Fursuit</h2><p>Existem diferentes estilos de trajes, variando conforme a cobertura do corpo:</p><p><strong>Fullsuit:</strong> Traje completo que cobre todo o corpo, incluindo cabeça, corpo, patas e cauda.</p><p><strong>Partial:</strong> Versão parcial que inclui apenas algumas partes, como cabeça, luvas (patas) e cauda, usada junto com roupas comuns.</p></section>
-    <section><h2>🧵 Arte e Confecção</h2><p>A criação de uma fursuit é um processo artesanal detalhado e complexo. Muitos artesãos (conhecidos como <i>fursuit makers</i>) esculpem as estruturas em espuma, costuram pelúcias sintéticas e aplicam olhos e detalhes customizados à mão.</p></section>
-    <section><h2>🐾 Continue explorando</h2><p>Além dos trajes, a arte visual é uma das bases fundamentais da comunidade. Descubra como a criatividade se manifesta em desenhos, ilustrações e animações.</p><a href="page4.html">Explorar Arte e Criatividade →</a></section>
+<section>
+    <h2>📸 Galeria de Fursuits</h2><p>Use estes espaços para adicionar fotos ou ilustrações de diferentes fursuits.</p>
+    <div class="image-gallery"><div class="image-box"><span>📷</span><p>Fursuit 1</p><small>Adicione sua imagem aqui.</small></div><div class="image-box"><span>📷</span><p>Fursuit 2</p><small>Adicione sua imagem aqui.</small></div><div class="image-box"><span>📷</span><p>Fursuit 3</p><small>Adicione sua imagem aqui.</small></div></div>
+</section>
+<section><h2>✂️ Principais Estilos de Fursuit</h2><p>Existem diferentes estilos de trajes, variando conforme a cobertura do corpo:</p><p><strong>Fullsuit:</strong> Traje completo que cobre todo o corpo, incluindo cabeça, corpo, patas e cauda.</p><p><strong>Partial:</strong> Versão parcial que inclui apenas algumas partes, como cabeça, luvas (patas) e cauda, usada junto com roupas comuns.</p></section>
+<section><h2>🧵 Arte e Confecção</h2><p>A criação de uma fursuit é um processo artesanal detalhado e complexo. Muitos artesãos (conhecidos como <i>fursuit makers</i>) esculpem as estruturas em espuma, costuram pelúcias sintéticas e aplicam olhos e detalhes customizados à mão.</p></section>
+<section><h2>🐾 Continue explorando</h2><p>Além dos trajes, a arte visual é uma das bases fundamentais da comunidade. Descubra como a criatividade se manifesta em desenhos, ilustrações e animações.</p><a href="page4.html">Explorar Arte e Criatividade →</a></section>
 </div></main>
 
 <footer><h2>🐾 Furverse</h2><p>Explorando a criatividade, amizade e paixão animal.</p><p>© 2026 Furverse</p></footer>
@@ -73,68 +66,132 @@ import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.169.0/exampl
 
 const viewer=document.getElementById('modelViewer');
 const scene=new THREE.Scene();
-scene.background=new THREE.Color(0x12172f);
-const camera=new THREE.PerspectiveCamera(38,1,.1,100);
-camera.position.set(0,.9,5.2);
+scene.background=new THREE.Color(0x0d1229);
+const camera=new THREE.PerspectiveCamera(34,1,.1,100);
+camera.position.set(0,.95,5.7);
 const renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 viewer.appendChild(renderer.domElement);
 
 const controls=new OrbitControls(camera,renderer.domElement);
-controls.enableDamping=true;
-controls.enablePan=false;
-controls.minDistance=3.1;
-controls.maxDistance=8;
-controls.target.set(0,.65,0);
+controls.enableDamping=true; controls.dampingFactor=.07; controls.enablePan=false;
+controls.minDistance=3.2; controls.maxDistance=8; controls.target.set(0,.9,0);
 
-scene.add(new THREE.HemisphereLight(0xffffff,0x29213f,2.4));
-const light=new THREE.DirectionalLight(0xffffff,3.2); light.position.set(3,5,4); scene.add(light);
-const fill=new THREE.DirectionalLight(0xb9c7ff,1.5); fill.position.set(-4,2,2); scene.add(fill);
+scene.add(new THREE.HemisphereLight(0xffffff,0x25203f,2.5));
+const key=new THREE.DirectionalLight(0xffffff,3.5); key.position.set(4,6,5); key.castShadow=true; scene.add(key);
+const fill=new THREE.DirectionalLight(0xaec5ff,1.8); fill.position.set(-4,3,2); scene.add(fill);
+const rim=new THREE.PointLight(0x9b6dff,2.2,7); rim.position.set(0,3,-3); scene.add(rim);
 
-const cream=new THREE.MeshStandardMaterial({color:0xf1e8d7,roughness:.82});
-const white=new THREE.MeshStandardMaterial({color:0xfff8eb,roughness:.86});
-const brown=new THREE.MeshStandardMaterial({color:0x4a3028,roughness:.9});
-const dark=new THREE.MeshStandardMaterial({color:0x2d211f,roughness:.78});
-const eyes=new THREE.MeshStandardMaterial({color:0x17151c,roughness:.18});
-const shine=new THREE.MeshBasicMaterial({color:0xffffff});
-const model=new THREE.Group();
-model.position.y=-.45;
-scene.add(model);
+// Pequenas partículas para deixar o visor mais "3D showcase".
+const starGeometry=new THREE.BufferGeometry();
+const starPositions=[];
+for(let i=0;i<150;i++) starPositions.push((Math.random()-.5)*7,Math.random()*5-1.2,(Math.random()-.5)*4-1.2);
+starGeometry.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));
+const stars=new THREE.Points(starGeometry,new THREE.PointsMaterial({color:0xffffff,size:.025,transparent:true,opacity:.55}));
+scene.add(stars);
 
-function sphere(scale,pos,mat,parent=model){const m=new THREE.Mesh(new THREE.SphereGeometry(1,32,24),mat);m.scale.set(...scale);m.position.set(...pos);parent.add(m);return m;}
-function capsule(radius,length,pos,mat,rot=[0,0,0]){const m=new THREE.Mesh(new THREE.CapsuleGeometry(radius,length,8,24),mat);m.position.set(...pos);m.rotation.set(...rot);model.add(m);return m;}
-function cone(radius,height,pos,mat,rot=[0,0,0]){const m=new THREE.Mesh(new THREE.ConeGeometry(radius,height,32),mat);m.position.set(...pos);m.rotation.set(...rot);model.add(m);return m;}
+const cream=new THREE.MeshStandardMaterial({color:0xe9dfd0,roughness:.92});
+const white=new THREE.MeshStandardMaterial({color:0xfff9ef,roughness:.88});
+const warmWhite=new THREE.MeshStandardMaterial({color:0xf5ead9,roughness:.9});
+const brown=new THREE.MeshStandardMaterial({color:0x51362d,roughness:.94});
+const brown2=new THREE.MeshStandardMaterial({color:0x392622,roughness:.9});
+const dark=new THREE.MeshStandardMaterial({color:0x21191a,roughness:.55});
+const eye=new THREE.MeshStandardMaterial({color:0x101017,roughness:.12,metalness:.1});
+const eyeGlow=new THREE.MeshStandardMaterial({color:0x6877ff,emissive:0x263cff,emissiveIntensity:.35,roughness:.2});
+const whiteMat=new THREE.MeshBasicMaterial({color:0xffffff});
+const model=new THREE.Group(); model.position.y=-1.0; scene.add(model);
 
-// Corpo macio e volumoso.
-capsule(.78,1.05,[0,.72,0],white); sphere([.64,.75,.55],[0,.55,.5],white);
-// Pernas e patas.
-capsule(.38,.72,[-.48,-.12,.02],cream); capsule(.38,.72,[.48,-.12,.02],cream);
-sphere([.47,.30,.66],[-.48,-.60,.18],brown); sphere([.47,.30,.66],[.48,-.60,.18],brown);
-// Cabeça.
-sphere([.88,.78,.78],[0,1.95,0],white); sphere([.64,.35,.58],[0,2.43,.02],cream);
-// Orelhas grandes.
-cone(.42,1.18,[-.58,2.62,0],brown,[0,0,.18]); cone(.42,1.18,[.58,2.62,0],brown,[0,0,-.18]);
-cone(.25,.76,[-.58,2.59,.12],white,[0,0,.18]); cone(.25,.76,[.58,2.59,.12],white,[0,0,-.18]);
-// Máscara e focinho.
-sphere([.47,.48,.28],[0,1.98,.68],brown); sphere([.40,.30,.34],[0,1.84,.82],dark); sphere([.18,.14,.16],[0,1.91,1.10],dark);
-// Olhos.
-sphere([.19,.23,.13],[-.32,2.12,.70],eyes); sphere([.19,.23,.13],[.32,2.12,.70],eyes);
-sphere([.055,.065,.025],[-.37,2.20,.82],shine); sphere([.055,.065,.025],[.27,2.20,.82],shine);
-// Braços e mãos.
-capsule(.27,.72,[-.78,.68,.02],brown,[0,0,-.25]); capsule(.27,.72,[.78,.68,.02],brown,[0,0,.25]);
-sphere([.34,.27,.32],[-.92,.26,.12],dark); sphere([.34,.27,.32],[.92,.26,.12],dark); sphere([.20,.26,.08],[0,.94,.59],brown);
-// Marcas.
-sphere([.38,.16,.08],[-.48,-.18,.37],brown); sphere([.38,.16,.08],[.48,-.18,.37],brown);
-// Cauda listrada.
-const tail=new THREE.Group(); tail.position.set(.70,.38,-.30); tail.rotation.z=-.35; model.add(tail);
-[[0,0,.48,cream],[.28,.10,.43,brown],[.52,.23,.38,cream],[.72,.39,.34,brown],[.88,.58,.29,cream],[.97,.76,.23,brown]].forEach(p=>sphere([p[2],p[2],p[2]*.9],[p[0],p[1],0],p[3],tail));
-// Chão.
-const floor=new THREE.Mesh(new THREE.CircleGeometry(3,64),new THREE.MeshStandardMaterial({color:0x1b2142,roughness:1})); floor.rotation.x=-Math.PI/2; floor.position.y=-1.05; scene.add(floor);
+function sphere(scale,pos,mat,parent=model){const m=new THREE.Mesh(new THREE.SphereGeometry(1,40,28),mat);m.scale.set(...scale);m.position.set(...pos);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;}
+function capsule(r,len,pos,mat,rot=[0,0,0],parent=model){const m=new THREE.Mesh(new THREE.CapsuleGeometry(r,len,10,32),mat);m.position.set(...pos);m.rotation.set(...rot);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;}
+function cone(r,h,pos,mat,rot=[0,0,0],parent=model){const m=new THREE.Mesh(new THREE.ConeGeometry(r,h,40),mat);m.position.set(...pos);m.rotation.set(...rot);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;}
+function torus(pos,rot,major,minor,mat,parent=model){const m=new THREE.Mesh(new THREE.TorusGeometry(major,minor,16,48),mat);m.position.set(...pos);m.rotation.set(...rot);m.castShadow=true;parent.add(m);return m;}
+
+// --- Corpo: mais arredondado e com volume de pelúcia ---
+capsule(.82,1.08,[0,.72,0],white);
+sphere([.70,.82,.60],[0,.55,.47],warmWhite);
+sphere([.55,.62,.50],[0,.70,-.05],cream);
+
+// Barriga clara bem destacada.
+sphere([.52,.62,.18],[0,.62,.69],white);
+
+// Quadris e pernas grossas.
+sphere([.55,.68,.54],[-.43,-.03,0],cream);
+sphere([.55,.68,.54],[.43,-.03,0],cream);
+capsule(.38,.68,[-.46,-.20,.08],cream,[.08,0,-.08]);
+capsule(.38,.68,[.46,-.20,.08],cream,[.08,0,.08]);
+
+// Patas traseiras grandes, com dedos visíveis.
+function paw(x,y,z){
+    sphere([.49,.31,.68],[x,y,z],brown);
+    for(let i=-1;i<=1;i++) sphere([.11,.10,.18],[x+i*.15,y-.16,z+.55],brown2);
+}
+paw(-.48,-.73,.18); paw(.48,-.73,.18);
+
+// --- Cabeça grande e expressiva ---
+sphere([.93,.83,.83],[0,2.00,.01],white);
+sphere([.68,.40,.62],[0,2.46,.02],cream);
+
+// Bochechas fofas.
+sphere([.38,.43,.40],[-.67,1.86,.08],white);
+sphere([.38,.43,.40],[.67,1.86,.08],white);
+
+// Orelhas triangulares grandes com interior claro.
+cone(.47,1.34,[-.61,2.70,-.01],brown,[0,0,.17]);
+cone(.47,1.34,[.61,2.70,-.01],brown,[0,0,-.17]);
+cone(.29,.92,[-.61,2.69,.15],warmWhite,[0,0,.17]);
+cone(.29,.92,[.61,2.69,.15],warmWhite,[0,0,-.17]);
+
+// Marcação facial semelhante à referência.
+sphere([.49,.53,.30],[0,2.00,.70],brown);
+sphere([.33,.28,.34],[-.30,1.92,.86],brown2);
+sphere([.33,.28,.34],[.30,1.92,.86],brown2);
+sphere([.39,.27,.30],[0,1.83,1.02],dark);
+sphere([.18,.13,.15],[0,1.91,1.17],brown2);
+
+// Olhos grandes, com aro e brilho.
+sphere([.235,.27,.14],[-.34,2.16,.72],eye);
+sphere([.235,.27,.14],[.34,2.16,.72],eye);
+sphere([.16,.20,.08],[-.34,2.16,.80],eyeGlow);
+sphere([.16,.20,.08],[.34,2.16,.80],eyeGlow);
+sphere([.065,.075,.025],[-.40,2.25,.88],whiteMat);
+sphere([.065,.075,.025],[.28,2.25,.88],whiteMat);
+
+// Pequenas mechas de pelúcia no topo da cabeça.
+for(const p of [[-.28,2.56,.20],[0,2.64,.20],[.28,2.56,.20]]) cone(.16,.48,[p[0],p[1],p[2]],cream,[0,0,p[0]*.35]);
+
+// --- Braços longos e patas dianteiras ---
+capsule(.29,.78,[-.78,.70,.03],brown,[0,0,-.28]);
+capsule(.29,.78,[.78,.70,.03],brown,[0,0,.28]);
+sphere([.38,.29,.38],[-.92,.27,.20],brown2);
+sphere([.38,.29,.38],[.92,.27,.20],brown2);
+for(const x of [-.92,.92]) for(let i=-1;i<=1;i++) sphere([.09,.09,.16],[x+i*.12,.15,.50],dark);
+
+// Marcas de pelo escuro no peito e braços.
+sphere([.22,.28,.10],[0,.98,.62],brown);
+sphere([.19,.23,.08],[-.23,1.13,.59],brown);
+sphere([.19,.23,.08],[.23,1.13,.59],brown);
+
+// --- Cauda volumosa com listras ---
+const tail=new THREE.Group(); tail.position.set(.70,.36,-.30); tail.rotation.z=-.32; model.add(tail);
+const tailData=[
+ [0,.02,.50,cream], [.25,.10,.47,brown], [.47,.22,.43,cream], [.66,.36,.39,brown], [.82,.53,.34,cream], [.93,.70,.29,brown], [1.00,.85,.22,brown2]
+];
+tailData.forEach((p,i)=>sphere([p[2],p[2],p[2]*.92],[p[0],p[1],0],p[3],tail));
+
+// Pequenas garras/almofadas visuais nas patas.
+for(const x of [-.48,.48]) sphere([.20,.10,.10],[x,-.84,.64],dark);
+
+// Plataforma de apresentação.
+const floor=new THREE.Mesh(new THREE.CylinderGeometry(2.35,2.55,.12,64),new THREE.MeshStandardMaterial({color:0x1b2142,roughness:.7,metalness:.15}));
+floor.position.y=-1.02; floor.receiveShadow=true; scene.add(floor);
+torus([0,-.94,0],[0,0,0],2.08,.025,new THREE.MeshBasicMaterial({color:0x3b9dff,transparent:true,opacity:.45}));
 
 function resize(){const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);}
 window.addEventListener('resize',resize); resize();
-function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera);} animate();
+function animate(){requestAnimationFrame(animate);controls.update();stars.rotation.y+=.0007;renderer.render(scene,camera);} animate();
 </script>
 </body>
 </html>
