@@ -168,6 +168,109 @@ section p {
 
 
 /* =========================================
+   PÁGINA DE EXPLORAÇÃO
+   ========================================= */
+
+.explore-page {
+    max-width: 1200px;
+    padding: 70px 30px 90px;
+}
+
+.explore-header {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.explore-header p:first-child {
+    color: #9B6DFF;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.explore-header h1 {
+    font-size: 48px;
+    color: #FFFFFF;
+    margin: 10px 0 15px;
+}
+
+.explore-header p:last-child {
+    font-size: 19px;
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.explore-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    padding: 30px;
+
+    background: linear-gradient(145deg, #191F3D, #211A46);
+    border: 1px solid #2D3765;
+    border-radius: 20px;
+
+    text-decoration: none;
+    color: inherit;
+
+    transition: 0.3s ease;
+}
+
+.explore-card:hover {
+    transform: translateY(-8px);
+    border-color: #3B9DFF;
+    box-shadow: 0 10px 30px rgba(59, 157, 255, 0.15);
+}
+
+.explore-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.explore-card h2 {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color: #9B6DFF;
+}
+
+.explore-card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.explore-link {
+    margin-top: auto;
+    color: #3B9DFF;
+    font-weight: bold;
+}
+
+.back-home {
+    display: block;
+    width: fit-content;
+    margin: 45px auto 0;
+
+    padding: 12px 24px;
+    border: 1px solid #2D3765;
+    border-radius: 25px;
+
+    color: #F5F5FF;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.back-home:hover {
+    border-color: #3B9DFF;
+    color: #3B9DFF;
+}
+
+
+/* =========================================
    CARDS
    ========================================= */
 
@@ -239,6 +342,14 @@ footer p {
    CELULAR
    ========================================= */
 
+@media (max-width: 900px) {
+
+    .explore-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
 @media (max-width: 768px) {
 
     header {
@@ -268,7 +379,16 @@ footer p {
         font-size: 30px;
     }
 
+    .explore-header h1 {
+        font-size: 36px;
+    }
+
+    .explore-grid {
+        grid-template-columns: 1fr;
+    }
+
 }
+
 .container {
     max-width: 1100px;
     margin: auto;
