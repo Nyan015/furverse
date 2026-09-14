@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fursuits - Furverse</title>
     <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
+        }
+    }
+    </script>
 </head>
 <body>
 <header>
@@ -104,13 +111,12 @@
 </footer>
 
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js';
+import * as THREE from 'three';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js';
 
 const viewer = document.getElementById('modelViewer');
 const referenceImage = document.getElementById('referenceImage');
 
-// A foto da demonstração fica armazenada no próprio repositório como texto Base64.
 fetch('assets/fursuit-reference.txt')
     .then(response => response.text())
     .then(data => { referenceImage.src = 'data:image/jpeg;base64,' + data.trim(); })
@@ -163,21 +169,27 @@ function cone(radius,height,pos,mat,rot=[0,0,0]){
     m.position.set(...pos); m.rotation.set(...rot); model.add(m); return m;
 }
 
-// Corpo e pernas.
+// Corpo macio e volumoso.
 capsule(.78,1.05,[0,.72,0],white);
 sphere([.64,.75,.55],[0,.55,.5],white);
+
+// Pernas e patas grandes.
 capsule(.38,.72,[-.48,-.12,.02],cream);
 capsule(.38,.72,[.48,-.12,.02],cream);
 sphere([.47,.30,.66],[-.48,-.60,.18],brown);
 sphere([.47,.30,.66],[.48,-.60,.18],brown);
 
-// Cabeça, orelhas e focinho.
+// Cabeça.
 sphere([.88,.78,.78],[0,1.95,0],white);
 sphere([.64,.35,.58],[0,2.43,.02],cream);
+
+// Orelhas grandes.
 cone(.42,1.18,[-.58,2.62,0],brown,[0,0,.18]);
 cone(.42,1.18,[.58,2.62,0],brown,[0,0,-.18]);
 cone(.25,.76,[-.58,2.59,.12],white,[0,0,.18]);
 cone(.25,.76,[.58,2.59,.12],white,[0,0,-.18]);
+
+// Máscara e focinho.
 sphere([.47,.48,.28],[0,1.98,.68],brown);
 sphere([.40,.30,.34],[0,1.84,.82],dark);
 sphere([.18,.14,.16],[0,1.91,1.10],dark);
@@ -188,7 +200,7 @@ sphere([.19,.23,.13],[.32,2.12,.70],eyes);
 sphere([.055,.065,.025],[-.37,2.20,.82],shine);
 sphere([.055,.065,.025],[.27,2.20,.82],shine);
 
-// Braços e patas.
+// Braços e mãos.
 capsule(.27,.72,[-.78,.68,.02],brown,[0,0,-.25]);
 capsule(.27,.72,[.78,.68,.02],brown,[0,0,.25]);
 sphere([.34,.27,.32],[-.92,.26,.12],dark);
@@ -199,16 +211,35 @@ sphere([.20,.26,.08],[0,.94,.59],brown);
 sphere([.38,.16,.08],[-.48,-.18,.37],brown);
 sphere([.38,.16,.08],[.48,-.18,.37],brown);
 
-// Cauda listrada estilizada.
-const tail=new THREE.Group(); tail.position.set(.70,.38,-.30); tail.rotation.z=-.35; model.add(tail);
+// Cauda listrada.
+const tail=new THREE.Group();
+tail.position.set(.70,.38,-.30);
+tail.rotation.z=-.35;
+model.add(tail);
 [[0,0,.48,cream],[.28,.10,.43,brown],[.52,.23,.38,cream],[.72,.39,.34,brown],[.88,.58,.29,cream],[.97,.76,.23,brown]].forEach((p,i)=>sphere([p[2],p[2],p[2]*.9],[p[0],p[1],0],p[3],tail));
 
+// Chão.
 const floor=new THREE.Mesh(new THREE.CircleGeometry(3,64),new THREE.MeshStandardMaterial({color:0x1b2142,roughness:1}));
-floor.rotation.x=-Math.PI/2; floor.position.y=-1.05; scene.add(floor);
+floor.rotation.x=-Math.PI/2;
+floor.position.y=-1.05;
+scene.add(floor);
 
-function resize(){const w=viewer.clientWidth,h=viewer.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);}
-window.addEventListener('resize',resize); resize();
-function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera);} animate();
+function resize(){
+    const w=viewer.clientWidth,h=viewer.clientHeight;
+    if(!w||!h)return;
+    camera.aspect=w/h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w,h,false);
+}
+window.addEventListener('resize',resize);
+resize();
+
+function animate(){
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene,camera);
+}
+animate();
 </script>
 </body>
 </html>
