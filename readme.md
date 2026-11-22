@@ -1,1 +1,0 @@
-Furverse é um site informativo e interativo dedicado a apresentar a cultura furry, suas formas de expressão artística, a criação de fursonas, fursuits e a dinâmica da sua comunidade de maneira clara, inclusiva e acessível.
